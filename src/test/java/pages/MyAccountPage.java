@@ -18,6 +18,8 @@ public class MyAccountPage {
     private WebElement registerButton;
     @FindBy(css = "div.woocommerce-password-strength")
     private WebElement assertionForTooWeakPassword;
+    @FindBy(css = ".woocommerce-error > li")
+    private WebElement assertionForInvalidEmail;
 
     public MyAccountPage() {
         PageFactory.initElements(new AjaxElementLocatorFactory(getDriver(), 10), this);
@@ -31,5 +33,9 @@ public class MyAccountPage {
 
     public String getAssertionForTooWeakPassword() {
         return assertionForTooWeakPassword.getText();
+    }
+
+    public String getAssertionForInvalidEmail() {
+        return assertionForInvalidEmail.getText();
     }
 }
