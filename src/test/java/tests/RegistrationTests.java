@@ -61,4 +61,18 @@ public class RegistrationTests extends BaseTest {
         String assertionMessage = myAccountPage.getAssertionForTooWeakPassword();
         Assertions.assertEquals("Bardzo s³abe - Proszê wpisaæ mocniejsze has³o.", assertionMessage);
     }
+
+    @Test
+    public void userRegistrationWithIncorrectEmailAddress() {
+        User user = new User();
+        user.setEmail("abcd@ef");
+        user.setPassword("Abcd123456789$");
+
+        homePage.closingTheInformationWindow();
+        homePage.topMenuChoice("Moje konto");
+        myAccountPage.registerUser(user);
+
+        String assertionMessage = myAccountPage.getAssertionForInvalidEmail();
+        Assertions.assertEquals("B³¹d: Podaj poprawny adres e-mail.", assertionMessage);
+    }
 }
