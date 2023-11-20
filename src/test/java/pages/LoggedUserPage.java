@@ -14,6 +14,8 @@ public class LoggedUserPage {
 
     @FindBy(css = "ul.phoen_nav_tab > li > a")
     private List<WebElement> assertionForRegisterUser;
+    @FindBy(css = "div.woocommerce-MyAccount-content>p")
+    private WebElement assertionForLogInUser;
 
     public LoggedUserPage() {
         PageFactory.initElements(new AjaxElementLocatorFactory(getDriver(), 10), this);
@@ -22,5 +24,9 @@ public class LoggedUserPage {
     public List<String> assertionForRegisterUser() {
         return assertionForRegisterUser.stream()
                 .map(element -> element.getAttribute("textContent")).collect(Collectors.toList());
+    }
+
+    public String getAssertionForLogInUser() {
+        return assertionForLogInUser.getText();
     }
 }

@@ -1,5 +1,6 @@
 package pages;
 
+import model.ReadyUsersWithData;
 import model.User;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,6 +21,12 @@ public class MyAccountPage {
     private WebElement assertionForTooWeakPassword;
     @FindBy(css = ".woocommerce-error > li")
     private WebElement assertionForInvalidEmail;
+    @FindBy(id = "username")
+    private WebElement userDataInput;
+    @FindBy(id = "password")
+    private WebElement userPasswordInput;
+    @FindBy(name = "login")
+    private WebElement logInButton;
 
     public MyAccountPage() {
         PageFactory.initElements(new AjaxElementLocatorFactory(getDriver(), 10), this);
@@ -37,5 +44,11 @@ public class MyAccountPage {
 
     public String getAssertionForInvalidEmail() {
         return assertionForInvalidEmail.getText();
+    }
+
+    public void logInUser(ReadyUsersWithData readyUsersWithData) {
+        userDataInput.sendKeys(readyUsersWithData.getEmail());
+        userPasswordInput.sendKeys(readyUsersWithData.getPassword());
+        logInButton.click();
     }
 }
