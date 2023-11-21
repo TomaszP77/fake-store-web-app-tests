@@ -27,6 +27,8 @@ public class MyAccountPage {
     private WebElement userPasswordInput;
     @FindBy(name = "login")
     private WebElement logInButton;
+    @FindBy(css = "[role=\"alert\"]>li")
+    private WebElement errorMessageForLogin;
 
     public MyAccountPage() {
         PageFactory.initElements(new AjaxElementLocatorFactory(getDriver(), 10), this);
@@ -50,5 +52,9 @@ public class MyAccountPage {
         userDataInput.sendKeys(readyUsersWithData.getEmail());
         userPasswordInput.sendKeys(readyUsersWithData.getPassword());
         logInButton.click();
+    }
+
+    public String errorMessageForLoginWithWrongData() {
+        return errorMessageForLogin.getText();
     }
 }

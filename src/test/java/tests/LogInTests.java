@@ -9,6 +9,7 @@ import pages.MyAccountPage;
 import utils.BaseTest;
 
 import static model.ReadyUsersWithData.userWithAccount;
+import static model.ReadyUsersWithData.userWithOutAccount;
 
 public class LogInTests extends BaseTest {
 
@@ -32,5 +33,16 @@ public class LogInTests extends BaseTest {
 
         Assertions.assertEquals("Witaj abc-7252 (nie jesteœ abc-7252? Wyloguj siê)"
                 , loggedUserPage.getAssertionForLogInUser());
+    }
+
+    @Test
+    public void logInUserWitchOutAccountTest() {
+        homePage.closingTheInformationWindow();
+        homePage.topMenuChoice("Moje konto");
+        myAccountPage.logInUser(userWithOutAccount());
+
+        Assertions.assertEquals("B³¹d: brak 1234 wœród zarejestrowanych w witrynie u¿ytkowników." +
+                        " Jeœli nie masz pewnoœci co do nazwy u¿ytkownika, u¿yj adresu e-mail."
+                , myAccountPage.errorMessageForLoginWithWrongData());
     }
 }
