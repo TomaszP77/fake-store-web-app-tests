@@ -16,6 +16,7 @@ public class ShoppingCartTests extends BaseTest {
     private ShopPage shopPage;
     private WindsurfingCategoryPage windsurfingCategoryPage;
     private CartPage cartPage;
+    private ClimbingPage climbingPage;
 
     @BeforeEach
     public void beforeEach() {
@@ -26,6 +27,7 @@ public class ShoppingCartTests extends BaseTest {
         shopPage = new ShopPage();
         windsurfingCategoryPage = new WindsurfingCategoryPage();
         cartPage = new CartPage();
+        climbingPage = new ClimbingPage();
     }
 
     @Test
@@ -41,5 +43,19 @@ public class ShoppingCartTests extends BaseTest {
 
         Assertions.assertEquals("Egipt - El Gouna", cartPage.getTextForAssertionCart());
         Assertions.assertTrue(cartPage.imageForAssertionCart());
+    }
+
+    @Test
+    public void storeCartUpdateTest() {
+        homePage.closingTheInformationWindow();
+        homePage.topMenuChoice("Sklep");
+        shopPage.setShoppingCategoryChoice("Wspinaczka");
+        climbingPage.setAddProductClimbingToCart();
+        climbingPage.goToTheCart();
+        cartPage.setQuantity("2");
+        cartPage.updateCart();
+
+        Assertions.assertEquals("Koszyk zaktualizowany.", cartPage.getCartUpdateMessage());
+        Assertions.assertTrue(cartPage.productQuantityDisplayedCheck().isDisplayed());
     }
 }
