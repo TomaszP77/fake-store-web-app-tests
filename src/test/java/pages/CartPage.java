@@ -6,6 +6,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
+import utils.SeleniumHelper;
 
 import static utils.DriverFactory.getDriver;
 
@@ -19,6 +20,14 @@ public class CartPage {
     private WebElement textForAssertionCart;
     @FindBy(css = "img[class=\"attachment-woocommerce_thumbnail size-woocommerce_thumbnail\"]")
     private WebElement imageForAssertionCart;
+    @FindBy(css = "div.quantity input")
+    private WebElement quantityField;
+    @FindBy(name = "update_cart")
+    private WebElement updateCartButton;
+    @FindBy(css = "div[class=\"woocommerce-message\"]")
+    private WebElement cartUpdateMessage;
+    @FindBy(css = "td.product-quantity")
+    private WebElement productQuantity;
 
     private WebDriver driver = getDriver();
 
@@ -41,5 +50,24 @@ public class CartPage {
 
     public boolean imageForAssertionCart() {
         return imageForAssertionCart.isDisplayed();
+    }
+
+    public void setQuantity(String quantity) {
+        quantityField.click();
+        quantityField.clear();
+        quantityField.sendKeys(quantity);
+    }
+
+    public void updateCart() {
+        updateCartButton.click();
+    }
+
+    public String getCartUpdateMessage() {
+        SeleniumHelper.waitForElementToBeVisible(cartUpdateMessage);
+        return cartUpdateMessage.getText();
+    }
+
+    public WebElement productQuantityDisplayedCheck() {
+        return productQuantity;
     }
 }
