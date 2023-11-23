@@ -28,6 +28,8 @@ public class CartPage {
     private WebElement cartUpdateMessage;
     @FindBy(css = "td.product-quantity")
     private WebElement productQuantity;
+    @FindBy(css = "[class=\"remove\"]")
+    private WebElement removeItemButton;
 
     private WebDriver driver = getDriver();
 
@@ -69,5 +71,13 @@ public class CartPage {
 
     public WebElement productQuantityDisplayedCheck() {
         return productQuantity;
+    }
+
+    public void removeItemFromCart() {
+        removeItemButton.click();
+    }
+
+    public String assertionMessageForRemoveProductFromCart() {
+        return cartUpdateMessage.getText();
     }
 }

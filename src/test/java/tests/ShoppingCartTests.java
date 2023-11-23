@@ -58,4 +58,15 @@ public class ShoppingCartTests extends BaseTest {
         Assertions.assertEquals("Koszyk zaktualizowany.", cartPage.getCartUpdateMessage());
         Assertions.assertTrue(cartPage.productQuantityDisplayedCheck().isDisplayed());
     }
+
+    @Test
+    public void deleteProductFromCartTest() {
+        homePage.closingTheInformationWindow();
+        homePage.selectionOfOffer("Windsurfing w Lanzarote (Costa Teguise)");
+        homePage.goToTheCartView();
+        cartPage.removeItemFromCart();
+
+        Assertions.assertEquals("Usuniêto: „Windsurfing w Lanzarote (Costa Teguise)“. Cofnij?"
+                , cartPage.assertionMessageForRemoveProductFromCart());
+    }
 }
