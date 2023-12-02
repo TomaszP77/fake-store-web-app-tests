@@ -1,6 +1,7 @@
 package tests;
 
 import model.BillingAddressData;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.*;
@@ -39,5 +40,7 @@ public class OrderAndPaymentTests extends BaseTest {
         cartPage.checkout();
         orderPage.billingAddressForm(billingAddressData);
         orderPage.paymentConfirm("4242 4242 4242 4242 4240", "06/24", "123");
+
+        Assertions.assertEquals("Zamówienie otrzymane", orderPage.orderComplete());
     }
 }
