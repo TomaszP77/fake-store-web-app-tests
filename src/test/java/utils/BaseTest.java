@@ -12,10 +12,10 @@ public class BaseTest {
         getDriver();
     }
 
-    @AfterAll
-    public static void afterAll() {
-        getDriver().quit();
-    }
+//    @AfterAll
+//    public static void afterAll() {
+//        getDriver().quit();
+//    }
 
     public void setUp() {
         getDriver().manage().deleteAllCookies();

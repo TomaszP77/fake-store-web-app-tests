@@ -30,6 +30,8 @@ public class CartPage {
     private WebElement productQuantity;
     @FindBy(css = "[class=\"remove\"]")
     private WebElement removeItemButton;
+    @FindBy(css = "a[class=\"checkout-button button alt wc-forward\"]")
+    private WebElement checkoutButton;
 
     private WebDriver driver = getDriver();
 
@@ -79,5 +81,9 @@ public class CartPage {
 
     public String assertionMessageForRemoveProductFromCart() {
         return cartUpdateMessage.getText();
+    }
+
+    public void checkout() {
+        checkoutButton.click();
     }
 }
