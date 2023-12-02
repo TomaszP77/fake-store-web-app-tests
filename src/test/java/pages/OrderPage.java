@@ -46,6 +46,8 @@ public class OrderPage {
     private WebElement confirmField;
     @FindBy(id = "place_order")
     private WebElement confirmPaymentButton;
+    @FindBy(xpath = "//h1[text()='Zamówienie otrzymane']")
+    private WebElement assertionMessageForOrderComplete;
 
     private WebDriver driver = getDriver();
 
@@ -76,6 +78,10 @@ public class OrderPage {
         driver.switchTo().defaultContent();
         confirmField.click();
         confirmPaymentButton.click();
+    }
+
+    public String orderComplete() {
+        return assertionMessageForOrderComplete.getText();
     }
 }
 
