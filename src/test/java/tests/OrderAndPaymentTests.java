@@ -4,7 +4,9 @@ import model.BillingAddressData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import pages.*;
+import pages.CartPage;
+import pages.HomePage;
+import pages.OrderPage;
 import utils.BaseTest;
 
 public class OrderAndPaymentTests extends BaseTest {
@@ -23,7 +25,6 @@ public class OrderAndPaymentTests extends BaseTest {
 
     @Test
     public void checkoutTest() {
-
         BillingAddressData billingAddressData = new BillingAddressData();
         billingAddressData.setFirstName("Angelika");
         billingAddressData.setLastName("Tomato");
@@ -41,6 +42,29 @@ public class OrderAndPaymentTests extends BaseTest {
         orderPage.billingAddressForm(billingAddressData);
         orderPage.paymentConfirm("4242 4242 4242 4242 4240", "06/24", "123");
 
-        Assertions.assertEquals("Zamówienie otrzymane", orderPage.orderComplete());
+        Assertions.assertEquals("Zamówienie otrzymane", orderPage.orderCompleteAssertion());
+    }
+
+    @Test
+    public void checkoutCardWithIncorrectExpirationDate() {
+        BillingAddressData billingAddressData = new BillingAddressData();
+        billingAddressData.setFirstName("Angelika");
+        billingAddressData.setLastName("Tomato");
+        billingAddressData.setStreetAddress("Tomato street");
+        billingAddressData.setPostcode("12 - 123");
+        billingAddressData.setTown("Warsaw");
+        billingAddressData.setPhone("123456789");
+        billingAddressData.setEmail("abcd@ab.cd");
+
+        homePage.closingTheInformationWindow();
+        homePage.selectionOfOffer("Fuerteventura - Sotavento");
+        homePage.selectionOfOffer("Kurs ¿eglarski na Mazurach");
+        homePage.goToTheCartView();
+        cartPage.checkout();
+        orderPage.billingAddressForm(billingAddressData);
+        orderPage.paymentConfirm("4242 4242 4242 4242 4240", "06/19", "123");
+
+        Assertions.assertEquals("Rok wa¿noœci karty up³yn¹³ w przesz³oœci",
+                orderPage.cardWithIncorrectExpirationDateAssertion());
     }
 }
