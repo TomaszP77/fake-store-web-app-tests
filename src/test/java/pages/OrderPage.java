@@ -48,6 +48,8 @@ public class OrderPage {
     private WebElement confirmPaymentButton;
     @FindBy(xpath = "//h1[text()='Zamówienie otrzymane']")
     private WebElement assertionMessageForOrderComplete;
+    @FindBy(css = "ul[class=\"woocommerce_error woocommerce-error wc-stripe-error\"]")
+    private WebElement assertionMessageForCardWithIncorrectExpirationDate;
 
     private WebDriver driver = getDriver();
 
@@ -80,8 +82,12 @@ public class OrderPage {
         confirmPaymentButton.click();
     }
 
-    public String orderComplete() {
+    public String orderCompleteAssertion() {
         return assertionMessageForOrderComplete.getText();
+    }
+
+    public String cardWithIncorrectExpirationDateAssertion() {
+        return assertionMessageForCardWithIncorrectExpirationDate.getText();
     }
 }
 
