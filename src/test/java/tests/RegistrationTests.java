@@ -50,6 +50,7 @@ public class RegistrationTests extends BaseTest {
     @Test
     public void userRegistrationWithWeakPassword() {
         int randomEmail = (int) (Math.random() * 1000);
+
         User user = new User();
         user.setEmail("abc@de" + randomEmail + ".fg");
         user.setPassword("abcd");

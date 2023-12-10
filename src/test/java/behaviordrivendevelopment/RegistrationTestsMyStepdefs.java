@@ -39,6 +39,7 @@ public class RegistrationTestsMyStepdefs extends BaseTest {
         User user = new User();
         user.setEmail(email);
         user.setPassword("Abcd123456789$");
+
         myAccountPage.registerUser(user);
     }
 
@@ -56,5 +57,32 @@ public class RegistrationTestsMyStepdefs extends BaseTest {
         Assertions.assertEquals("Edycja konta", assertionElements.get(2));
         Assertions.assertEquals("Adres", assertionElements.get(3));
         Assertions.assertEquals("Wyloguj", assertionElements.get(4));
+    }
+
+    @And("The user provides a valid e-mail address and a weak password and clicks the Register button.")
+    public void theUserProvidesAValidEMailAddressAndAWeakPasswordAndClicksTheRegisterButton() {
+        int randomEmail = (int) (Math.random() * 1000);
+
+        User user = new User();
+        user.setEmail("abc@de" + randomEmail + ".fg");
+        user.setPassword("abcd");
+
+        myAccountPage.registerUser(user);
+    }
+
+    @Then("The user is not registered because his password is too weak.")
+    public void theUserIsNotRegisteredBecauseHisPasswordIsTooWeak() {
+        int randomEmail = (int) (Math.random() * 1000);
+
+        User user = new User();
+        user.setEmail("abc@de" + randomEmail + ".fg");
+        user.setPassword("abcd");
+
+        homePage.closingTheInformationWindow();
+        homePage.topMenuChoice("Moje konto");
+        myAccountPage.registerUser(user);
+
+        String assertionMessage = myAccountPage.getAssertionForTooWeakPassword();
+        Assertions.assertEquals("Bardzo słabe - Proszę wpisać mocniejsze hasło.", assertionMessage);
     }
 }
