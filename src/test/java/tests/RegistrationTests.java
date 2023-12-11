@@ -73,7 +73,7 @@ public class RegistrationTests extends BaseTest {
         homePage.topMenuChoice("Moje konto");
         myAccountPage.registerUser(user);
 
-        String assertionMessage = myAccountPage.getAssertionForInvalidEmail();
-        Assertions.assertEquals("B³¹d: Podaj poprawny adres e-mail.", assertionMessage);
+        Assertions.assertEquals("B³¹d: Podaj poprawny adres e-mail.",
+                myAccountPage.getAssertionForInvalidEmail());
     }
 }
