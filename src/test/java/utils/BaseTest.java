@@ -1,6 +1,5 @@
 package utils;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 
 import static utils.DriverFactory.getDriver;
@@ -10,11 +9,6 @@ public class BaseTest {
     @BeforeAll
     public static void beforeAll() {
         getDriver();
-    }
-
-    @AfterAll
-    public static void afterAll() {
-        getDriver().quit();
     }
 
     public void setUp() {
