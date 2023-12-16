@@ -1,4 +1,4 @@
-Feature: Registration user Tests
+Feature: Registration user tests
 
   Background:
     Given Page is loaded
@@ -23,7 +23,6 @@ Feature: Registration user Tests
     And The user clicks the "Moje konto" button from the top menu
     And The user provides an incorrect e-mail address and password and clicks the Register button
     Then Message appears: Blad: Podaj poprawny adres e-mail.
-
 
 
 

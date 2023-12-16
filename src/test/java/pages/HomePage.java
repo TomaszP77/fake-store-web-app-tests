@@ -36,7 +36,7 @@ public class HomePage {
     }
 
     public void selectionOfOffer(String selectionOfOffer) {
-        String css = String.format("[aria-label='Dodaj „%s” do koszyka']", selectionOfOffer);
+        String css = String.format("[aria-label='Add to cart: “%s”']", selectionOfOffer);
         getDriver().findElement(By.cssSelector(css)).click();
     }
 }
