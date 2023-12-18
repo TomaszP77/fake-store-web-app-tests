@@ -2,6 +2,9 @@ Feature: Registration user tests
 
   Background:
     Given Page is loaded
+    Given Home page step definitions are available
+    Given My account page step definitions are available
+    Given Logged user page step definitions are available
 
   Scenario: New user registration test
 
