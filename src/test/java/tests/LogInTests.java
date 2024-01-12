@@ -36,7 +36,7 @@ public class LogInTests extends BaseTest {
     }
 
     @Test
-    public void logInUserWitchOutAccountTest() {
+    public void logInTheUserWithWrongDataTest() {
         homePage.closingTheInformationWindow();
         homePage.topMenuChoice("Moje konto");
         myAccountPage.logInUser(userWithOutAccount());
