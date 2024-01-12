@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Assertions;
 import pages.MyAccountPage;
 
 import static model.ReadyUsersWithData.userWithAccount;
+import static model.ReadyUsersWithData.userWithOutAccount;
 
 public class MyAccountPageStepdefs {
 
@@ -65,5 +66,17 @@ public class MyAccountPageStepdefs {
     public void messageAppearsBardzoSlabeProszeWpisacMocniejszeHaslo() {
         String assertionMessage = myAccountPage.getAssertionForTooWeakPassword();
         Assertions.assertEquals("Bardzo s³abe - Proszê wpisaæ mocniejsze has³o.", assertionMessage);
+    }
+
+    @And("In the log in section, the user enters the incorrect email address and password, then clicks the log in button")
+    public void inTheLogInSectionTheUserEntersTheIncorrectEmailAddressAndPasswordThenClicksTheLogInButton() {
+        myAccountPage.logInUser(userWithOutAccount());
+    }
+
+    @Then("Message appears: Blad: brak {int} wsrod zarejestrowanych w witrynie uzytkownikow.")
+    public void messageAppearsBladBrakWsrodZarejestrowanychWWitrynieUzytkownikow(int arg0) {
+        Assertions.assertEquals("B³¹d: brak 1234 wœród zarejestrowanych w witrynie u¿ytkowników." +
+                        " Jeœli nie masz pewnoœci co do nazwy u¿ytkownika, u¿yj adresu e-mail."
+                , myAccountPage.errorMessageForLoginWithWrongData());
     }
 }
