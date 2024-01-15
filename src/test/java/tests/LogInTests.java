@@ -7,6 +7,9 @@ import pages.HomePage;
 import pages.LoggedUserPage;
 import pages.MyAccountPage;
 import utils.BaseTest;
+import utils.Screenshot;
+
+import java.io.IOException;
 
 import static model.ReadyUsersWithData.userWithAccount;
 import static model.ReadyUsersWithData.userWithOutAccount;
@@ -26,17 +29,18 @@ public class LogInTests extends BaseTest {
     }
 
     @Test
-    public void logInTest() {
+    public void logInTest() throws IOException {
         homePage.closingTheInformationWindow();
         homePage.topMenuChoice("Moje konto");
         myAccountPage.logInUser(userWithAccount());
 
         Assertions.assertEquals("Witaj abc-7252 (nie jesteœ abc-7252? Wyloguj siê)"
                 , loggedUserPage.getAssertionForLogInUser());
+        Screenshot.screenshotAssertion("logInTest");
     }
 
     @Test
-    public void logInTheUserWithWrongDataTest() {
+    public void logInTheUserWithWrongDataTest() throws IOException {
         homePage.closingTheInformationWindow();
         homePage.topMenuChoice("Moje konto");
         myAccountPage.logInUser(userWithOutAccount());
@@ -44,5 +48,6 @@ public class LogInTests extends BaseTest {
         Assertions.assertEquals("B³¹d: brak 1234 wœród zarejestrowanych w witrynie u¿ytkowników." +
                         " Jeœli nie masz pewnoœci co do nazwy u¿ytkownika, u¿yj adresu e-mail."
                 , myAccountPage.errorMessageForLoginWithWrongData());
+        Screenshot.screenshotAssertion("logInTheUserWithWrongDataTest");
     }
 }
