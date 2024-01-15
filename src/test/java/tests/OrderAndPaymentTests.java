@@ -70,5 +70,6 @@ public class OrderAndPaymentTests extends BaseTest {
 
         Assertions.assertEquals("Rok wa¿noœci karty up³yn¹³ w przesz³oœci",
                 orderPage.cardWithIncorrectExpirationDateAssertion());
+        Screenshot.screenshotAssertion("checkoutCardWithIncorrectExpirationDate");
     }
 }
