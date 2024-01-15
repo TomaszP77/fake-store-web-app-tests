@@ -8,6 +8,9 @@ import pages.CartPage;
 import pages.HomePage;
 import pages.OrderPage;
 import utils.BaseTest;
+import utils.Screenshot;
+
+import java.io.IOException;
 
 public class OrderAndPaymentTests extends BaseTest {
 
@@ -24,7 +27,7 @@ public class OrderAndPaymentTests extends BaseTest {
     }
 
     @Test
-    public void checkoutTest() {
+    public void checkoutTest() throws IOException {
         BillingAddressData billingAddressData = new BillingAddressData();
         billingAddressData.setFirstName("Angelika");
         billingAddressData.setLastName("Tomato");
@@ -43,10 +46,11 @@ public class OrderAndPaymentTests extends BaseTest {
         orderPage.paymentConfirm("4242 4242 4242 4242 4240", "06/24", "123");
 
         Assertions.assertEquals("Zamówienie otrzymane", orderPage.orderCompleteAssertion());
+        Screenshot.screenshotAssertion("checkoutTest");
     }
 
     @Test
-    public void checkoutCardWithIncorrectExpirationDate() {
+    public void checkoutCardWithIncorrectExpirationDate() throws IOException {
         BillingAddressData billingAddressData = new BillingAddressData();
         billingAddressData.setFirstName("Angelika");
         billingAddressData.setLastName("Tomato");
