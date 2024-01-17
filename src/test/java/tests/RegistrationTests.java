@@ -8,7 +8,9 @@ import pages.HomePage;
 import pages.LoggedUserPage;
 import pages.MyAccountPage;
 import utils.BaseTest;
+import utils.Screenshot;
 
+import java.io.IOException;
 import java.util.List;
 
 public class RegistrationTests extends BaseTest {
@@ -26,7 +28,7 @@ public class RegistrationTests extends BaseTest {
     }
 
     @Test
-    public void registrationUserTest() {
+    public void registrationUserTest() throws IOException {
         int randomEmail = (int) (Math.random() * 1000);
         String email = "abc@de" + randomEmail + ".fg";
 
@@ -45,6 +47,7 @@ public class RegistrationTests extends BaseTest {
         Assertions.assertEquals("Edycja konta", assertionElements.get(2));
         Assertions.assertEquals("Adres", assertionElements.get(3));
         Assertions.assertEquals("Wyloguj", assertionElements.get(4));
+        Screenshot.screenshotAssertion("registrationUserTest");
     }
 
     @Test
