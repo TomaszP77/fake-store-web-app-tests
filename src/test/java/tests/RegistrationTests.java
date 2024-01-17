@@ -68,7 +68,7 @@ public class RegistrationTests extends BaseTest {
     }
 
     @Test
-    public void userRegistrationWithIncorrectEmailAddress() {
+    public void userRegistrationWithIncorrectEmailAddress() throws IOException {
         User user = new User();
         user.setEmail("abcd@ef");
         user.setPassword("Abcd123456789$");
@@ -79,5 +79,6 @@ public class RegistrationTests extends BaseTest {
 
         Assertions.assertEquals("B³¹d: Podaj poprawny adres e-mail.",
                 myAccountPage.getAssertionForInvalidEmail());
+        Screenshot.screenshotAssertion("userRegistrationWithIncorrectEmailAddress");
     }
 }

@@ -19,7 +19,7 @@ public class MyAccountPage {
     private WebElement registerButton;
     @FindBy(css = "div.woocommerce-password-strength")
     private WebElement assertionForTooWeakPassword;
-    @FindBy(css = ".woocommerce-error > li")
+    @FindBy(css = ".is-error")
     private WebElement assertionForInvalidEmail;
     @FindBy(id = "username")
     private WebElement userDataInput;
