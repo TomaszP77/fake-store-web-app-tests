@@ -51,7 +51,7 @@ public class RegistrationTests extends BaseTest {
     }
 
     @Test
-    public void userRegistrationWithWeakPassword() {
+    public void userRegistrationWithWeakPassword() throws IOException {
         int randomEmail = (int) (Math.random() * 1000);
 
         User user = new User();
@@ -64,6 +64,7 @@ public class RegistrationTests extends BaseTest {
 
         String assertionMessage = myAccountPage.getAssertionForTooWeakPassword();
         Assertions.assertEquals("Bardzo s³abe - Proszê wpisaæ mocniejsze has³o.", assertionMessage);
+        Screenshot.screenshotAssertion("userRegistrationWithWeakPassword");
     }
 
     @Test
