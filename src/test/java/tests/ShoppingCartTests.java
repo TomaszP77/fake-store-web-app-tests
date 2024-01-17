@@ -5,6 +5,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.*;
 import utils.BaseTest;
+import utils.Screenshot;
+
+import java.io.IOException;
 
 import static model.ReadyUsersWithData.userWithAccount;
 
@@ -31,7 +34,7 @@ public class ShoppingCartTests extends BaseTest {
     }
 
     @Test
-    public void addToCartTest() {
+    public void addToCartTest() throws IOException {
         homePage.closingTheInformationWindow();
         homePage.topMenuChoice("Moje konto");
         myAccountPage.logInUser(userWithAccount());
@@ -43,6 +46,7 @@ public class ShoppingCartTests extends BaseTest {
 
         Assertions.assertEquals("Egipt - El Gouna", cartPage.getTextForAssertionCart());
         Assertions.assertTrue(cartPage.imageForAssertionCart());
+        Screenshot.screenshotAssertion("addToCartTest");
     }
 
     @Test
