@@ -65,7 +65,7 @@ public class ShoppingCartTests extends BaseTest {
     }
 
     @Test
-    public void deleteProductFromCartTest() {
+    public void deleteProductFromCartTest() throws IOException {
         homePage.closingTheInformationWindow();
         homePage.selectionOfOffer("Windsurfing w Lanzarote (Costa Teguise)");
         homePage.goToTheCartView();
@@ -73,5 +73,6 @@ public class ShoppingCartTests extends BaseTest {
 
         Assertions.assertEquals("Usuniêto: „Windsurfing w Lanzarote (Costa Teguise)“. Cofnij?"
                 , cartPage.assertionMessageForRemoveProductFromCart());
+        Screenshot.screenshotAssertion("deleteProductFromCartTest");
     }
 }
