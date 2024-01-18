@@ -50,7 +50,7 @@ public class ShoppingCartTests extends BaseTest {
     }
 
     @Test
-    public void storeCartUpdateTest() {
+    public void storeCartUpdateTest() throws IOException {
         homePage.closingTheInformationWindow();
         homePage.topMenuChoice("Sklep");
         shopPage.setShoppingCategoryChoice("Wspinaczka");
@@ -61,6 +61,7 @@ public class ShoppingCartTests extends BaseTest {
 
         Assertions.assertEquals("Koszyk zaktualizowany.", cartPage.getCartUpdateMessage());
         Assertions.assertTrue(cartPage.productQuantityDisplayedCheck().isDisplayed());
+        Screenshot.screenshotAssertion("storeCartUpdateTest");
     }
 
     @Test
