@@ -8,9 +8,10 @@ import pages.CartPage;
 import pages.HomePage;
 import pages.OrderPage;
 import utils.BaseTest;
-import utils.Screenshot;
 
 import java.io.IOException;
+
+import static utils.Screenshot.screenshotAssertion;
 
 public class OrderAndPaymentTests extends BaseTest {
 
@@ -46,7 +47,7 @@ public class OrderAndPaymentTests extends BaseTest {
         orderPage.paymentConfirm("4242 4242 4242 4242 4240", "06/24", "123");
 
         Assertions.assertEquals("Zamówienie otrzymane", orderPage.orderCompleteAssertion());
-        Screenshot.screenshotAssertion("checkoutTest");
+        screenshotAssertion("checkoutTest");
     }
 
     @Test
@@ -70,6 +71,6 @@ public class OrderAndPaymentTests extends BaseTest {
 
         Assertions.assertEquals("Rok wa¿noœci karty up³yn¹³ w przesz³oœci",
                 orderPage.cardWithIncorrectExpirationDateAssertion());
-        Screenshot.screenshotAssertion("checkoutCardWithIncorrectExpirationDate");
+        screenshotAssertion("checkoutCardWithIncorrectExpirationDate");
     }
 }

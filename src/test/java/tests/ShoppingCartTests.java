@@ -5,11 +5,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.*;
 import utils.BaseTest;
-import utils.Screenshot;
 
 import java.io.IOException;
 
 import static model.ReadyUsersWithData.userWithAccount;
+import static utils.Screenshot.screenshotAssertion;
 
 public class ShoppingCartTests extends BaseTest {
 
@@ -46,7 +46,7 @@ public class ShoppingCartTests extends BaseTest {
 
         Assertions.assertEquals("Egipt - El Gouna", cartPage.getTextForAssertionCart());
         Assertions.assertTrue(cartPage.imageForAssertionCart());
-        Screenshot.screenshotAssertion("addToCartTest");
+        screenshotAssertion("addToCartTest");
     }
 
     @Test
@@ -61,7 +61,7 @@ public class ShoppingCartTests extends BaseTest {
 
         Assertions.assertEquals("Koszyk zaktualizowany.", cartPage.getCartUpdateMessage());
         Assertions.assertTrue(cartPage.productQuantityDisplayedCheck().isDisplayed());
-        Screenshot.screenshotAssertion("storeCartUpdateTest");
+        screenshotAssertion("storeCartUpdateTest");
     }
 
     @Test
@@ -73,6 +73,6 @@ public class ShoppingCartTests extends BaseTest {
 
         Assertions.assertEquals("Usuniêto: „Windsurfing w Lanzarote (Costa Teguise)“. Cofnij?"
                 , cartPage.assertionMessageForRemoveProductFromCart());
-        Screenshot.screenshotAssertion("deleteProductFromCartTest");
+        screenshotAssertion("deleteProductFromCartTest");
     }
 }
