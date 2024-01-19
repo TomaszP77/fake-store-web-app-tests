@@ -8,10 +8,11 @@ import pages.HomePage;
 import pages.LoggedUserPage;
 import pages.MyAccountPage;
 import utils.BaseTest;
-import utils.Screenshot;
 
 import java.io.IOException;
 import java.util.List;
+
+import static utils.Screenshot.screenshotAssertion;
 
 public class RegistrationTests extends BaseTest {
 
@@ -47,7 +48,7 @@ public class RegistrationTests extends BaseTest {
         Assertions.assertEquals("Edycja konta", assertionElements.get(2));
         Assertions.assertEquals("Adres", assertionElements.get(3));
         Assertions.assertEquals("Wyloguj", assertionElements.get(4));
-        Screenshot.screenshotAssertion("registrationUserTest");
+        screenshotAssertion("registrationUserTest");
     }
 
     @Test
@@ -64,7 +65,7 @@ public class RegistrationTests extends BaseTest {
 
         String assertionMessage = myAccountPage.getAssertionForTooWeakPassword();
         Assertions.assertEquals("Bardzo s³abe - Proszê wpisaæ mocniejsze has³o.", assertionMessage);
-        Screenshot.screenshotAssertion("userRegistrationWithWeakPassword");
+        screenshotAssertion("userRegistrationWithWeakPassword");
     }
 
     @Test
@@ -79,6 +80,6 @@ public class RegistrationTests extends BaseTest {
 
         Assertions.assertEquals("B³¹d: Podaj poprawny adres e-mail.",
                 myAccountPage.getAssertionForInvalidEmail());
-        Screenshot.screenshotAssertion("userRegistrationWithIncorrectEmailAddress");
+        screenshotAssertion("userRegistrationWithIncorrectEmailAddress");
     }
 }
