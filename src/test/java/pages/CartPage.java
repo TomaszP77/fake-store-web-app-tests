@@ -14,7 +14,7 @@ public class CartPage {
 
     @FindBy(css = "[class = cart-contents]")
     private WebElement cartQuickLook;
-    @FindBy(css = "a[class=\"button wc-forward\"]")
+    @FindBy(css = "[class=\"button wc-forward\"]")
     private WebElement viewCartButton;
     @FindBy(css = "td.product-name>a")
     private WebElement textForAssertionCart;

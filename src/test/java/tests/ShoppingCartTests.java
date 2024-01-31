@@ -40,7 +40,7 @@ public class ShoppingCartTests extends BaseTest {
         myAccountPage.logInUser(userWithAccount());
         homePage.topMenuChoice("Sklep");
         shopPage.setShoppingCategoryChoice("Windsurfing");
-        windsurfingCategoryPage.setAddProductWindsurfingToCart();
+        windsurfingCategoryPage.setAddProductWindsurfingEgiptElGounaToCart();
         cartPage.moveCursorTooCartQuickLook();
         cartPage.viewCart();
 
