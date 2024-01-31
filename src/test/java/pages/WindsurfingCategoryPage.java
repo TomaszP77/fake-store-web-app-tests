@@ -16,7 +16,7 @@ public class WindsurfingCategoryPage {
         PageFactory.initElements(new AjaxElementLocatorFactory(getDriver(), 10), this);
     }
 
-    public void setAddProductWindsurfingToCart() {
+    public void setAddProductWindsurfingEgiptElGounaToCart() {
         addProductWindsurfingToCart.click();
     }
 }
