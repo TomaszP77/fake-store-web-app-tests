@@ -46,4 +46,15 @@ public class CartPageStepdefs {
         Assertions.assertEquals("Koszyk zaktualizowany.", cartPage.getCartUpdateMessage());
         Assertions.assertTrue(cartPage.productQuantityDisplayedCheck().isDisplayed());
     }
+
+    @And("The user removes the item from the cart")
+    public void theUserRemovesTheItemFromTheCart() {
+        cartPage.removeItemFromCart();
+    }
+
+    @Then("The user then notices that the product has been successfully removed from the cart")
+    public void theUserThenNoticesThatTheProductHasBeenSuccessfullyRemovedFromTheCart() {
+        Assertions.assertEquals("Usunięto: „Windsurfing w Lanzarote (Costa Teguise)“. Cofnij?"
+                , cartPage.assertionMessageForRemoveProductFromCart());
+    }
 }

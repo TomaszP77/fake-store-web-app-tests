@@ -23,4 +23,14 @@ public class HomePageStepdefs {
     public void theUserClosesTheNotificationWindowAtTheBottomOfThePage() {
         homePage.closingTheInformationWindow();
     }
+
+    @And("The user will select an offer {string}")
+    public void theUserWillSelectAnOffer(String selectionOfOffer) {
+        homePage.selectionOfOffer(selectionOfOffer);
+    }
+
+    @And("The user will go to the shopping cart view")
+    public void theUserWillGoToTheShoppingCartView() {
+        homePage.goToTheCartView();
+    }
 }
