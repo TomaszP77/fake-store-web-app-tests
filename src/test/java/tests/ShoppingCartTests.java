@@ -6,7 +6,10 @@ import org.junit.jupiter.api.Test;
 import pages.*;
 import utils.BaseTest;
 
+import java.io.IOException;
+
 import static model.ReadyUsersWithData.userWithAccount;
+import static utils.Screenshot.screenshotAssertion;
 
 public class ShoppingCartTests extends BaseTest {
 
@@ -31,7 +34,7 @@ public class ShoppingCartTests extends BaseTest {
     }
 
     @Test
-    public void addToCartTest() {
+    public void addToCartTest() throws IOException {
         homePage.closingTheInformationWindow();
         homePage.topMenuChoice("Moje konto");
         myAccountPage.logInUser(userWithAccount());
@@ -43,10 +46,11 @@ public class ShoppingCartTests extends BaseTest {
 
         Assertions.assertEquals("Egipt - El Gouna", cartPage.getTextForAssertionCart());
         Assertions.assertTrue(cartPage.imageForAssertionCart());
+        screenshotAssertion("addToCartTest");
     }
 
     @Test
-    public void storeCartUpdateTest() {
+    public void storeCartUpdateTest() throws IOException {
         homePage.closingTheInformationWindow();
         homePage.topMenuChoice("Sklep");
         shopPage.setShoppingCategoryChoice("Wspinaczka");
@@ -57,10 +61,11 @@ public class ShoppingCartTests extends BaseTest {
 
         Assertions.assertEquals("Koszyk zaktualizowany.", cartPage.getCartUpdateMessage());
         Assertions.assertTrue(cartPage.productQuantityDisplayedCheck().isDisplayed());
+        screenshotAssertion("storeCartUpdateTest");
     }
 
     @Test
-    public void deleteProductFromCartTest() {
+    public void deleteProductFromCartTest() throws IOException {
         homePage.closingTheInformationWindow();
         homePage.selectionOfOffer("Windsurfing w Lanzarote (Costa Teguise)");
         homePage.goToTheCartView();
@@ -68,5 +73,6 @@ public class ShoppingCartTests extends BaseTest {
 
         Assertions.assertEquals("Usuniêto: „Windsurfing w Lanzarote (Costa Teguise)“. Cofnij?"
                 , cartPage.assertionMessageForRemoveProductFromCart());
+        screenshotAssertion("deleteProductFromCartTest");
     }
 }

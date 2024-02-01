@@ -9,7 +9,10 @@ import pages.LoggedUserPage;
 import pages.MyAccountPage;
 import utils.BaseTest;
 
+import java.io.IOException;
 import java.util.List;
+
+import static utils.Screenshot.screenshotAssertion;
 
 public class RegistrationTests extends BaseTest {
 
@@ -26,7 +29,7 @@ public class RegistrationTests extends BaseTest {
     }
 
     @Test
-    public void registrationUserTest() {
+    public void registrationUserTest() throws IOException {
         int randomEmail = (int) (Math.random() * 1000);
         String email = "abc@de" + randomEmail + ".fg";
 
@@ -45,10 +48,11 @@ public class RegistrationTests extends BaseTest {
         Assertions.assertEquals("Edycja konta", assertionElements.get(2));
         Assertions.assertEquals("Adres", assertionElements.get(3));
         Assertions.assertEquals("Wyloguj", assertionElements.get(4));
+        screenshotAssertion("registrationUserTest");
     }
 
     @Test
-    public void userRegistrationWithWeakPassword() {
+    public void userRegistrationWithWeakPassword() throws IOException {
         int randomEmail = (int) (Math.random() * 1000);
 
         User user = new User();
@@ -61,10 +65,11 @@ public class RegistrationTests extends BaseTest {
 
         String assertionMessage = myAccountPage.getAssertionForTooWeakPassword();
         Assertions.assertEquals("Bardzo s³abe - Proszê wpisaæ mocniejsze has³o.", assertionMessage);
+        screenshotAssertion("userRegistrationWithWeakPassword");
     }
 
     @Test
-    public void userRegistrationWithIncorrectEmailAddress() {
+    public void userRegistrationWithIncorrectEmailAddress() throws IOException {
         User user = new User();
         user.setEmail("abcd@ef");
         user.setPassword("Abcd123456789$");
@@ -75,5 +80,6 @@ public class RegistrationTests extends BaseTest {
 
         Assertions.assertEquals("B³¹d: Podaj poprawny adres e-mail.",
                 myAccountPage.getAssertionForInvalidEmail());
+        screenshotAssertion("userRegistrationWithIncorrectEmailAddress");
     }
 }
