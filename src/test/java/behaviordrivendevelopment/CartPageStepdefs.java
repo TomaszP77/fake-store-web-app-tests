@@ -30,4 +30,20 @@ public class CartPageStepdefs {
         Assertions.assertEquals("Egipt - El Gouna", cartPage.getTextForAssertionCart());
         Assertions.assertTrue(cartPage.imageForAssertionCart());
     }
+
+    @And("The user sets the number of products in the basket {string}")
+    public void theUserSetsTheNumberOfProductsInTheBasket(String quantity) {
+        cartPage.setQuantity(quantity);
+    }
+
+    @And("The user updates the cart")
+    public void theUserUpdatesTheCart() {
+        cartPage.updateCart();
+    }
+
+    @Then("The User then notices that the cart has been successfully updated")
+    public void theUserThenNoticesThatTheCartHasBeenSuccessfullyUpdated() {
+        Assertions.assertEquals("Koszyk zaktualizowany.", cartPage.getCartUpdateMessage());
+        Assertions.assertTrue(cartPage.productQuantityDisplayedCheck().isDisplayed());
+    }
 }

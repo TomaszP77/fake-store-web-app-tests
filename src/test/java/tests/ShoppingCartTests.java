@@ -54,7 +54,7 @@ public class ShoppingCartTests extends BaseTest {
         homePage.closingTheInformationWindow();
         homePage.topMenuChoice("Sklep");
         shopPage.setShoppingCategoryChoice("Wspinaczka");
-        climbingPage.setAddProductClimbingToCart();
+        climbingPage.addingTheGranKoscielcowProductToTheCart();
         climbingPage.goToTheCart();
         cartPage.setQuantity("2");
         cartPage.updateCart();

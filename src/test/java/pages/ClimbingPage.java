@@ -18,7 +18,7 @@ public class ClimbingPage {
         PageFactory.initElements(new AjaxElementLocatorFactory(getDriver(), 10), this);
     }
 
-    public void setAddProductClimbingToCart() {
+    public void addingTheGranKoscielcowProductToTheCart() {
         addProductClimbingToCart.click();
     }
 
