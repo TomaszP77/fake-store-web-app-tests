@@ -1,6 +1,7 @@
 Feature: Registration user tests
 
   Background:
+
     Given Page is loaded
     Given Home page step definitions are available
     Given My account page step definitions are available
@@ -21,7 +22,6 @@ Feature: Registration user tests
     Then Message appears: Bardzo slabe - Prosze wpisac mocniejsze haslo.
 
   Scenario: Attempt to register a user with an incorrect email address
-
     When The user closes the notification window at the bottom of the page
     And The user clicks the "Moje konto" button from the top menu
     And The user provides an incorrect e-mail address and password and clicks the Register button

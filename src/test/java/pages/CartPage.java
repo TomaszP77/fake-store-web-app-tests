@@ -24,7 +24,7 @@ public class CartPage {
     private WebElement quantityField;
     @FindBy(name = "update_cart")
     private WebElement updateCartButton;
-    @FindBy(css = "div[class=\"woocommerce-message\"]")
+    @FindBy(css = ".wc-block-components-notice-banner__content")
     private WebElement cartUpdateMessage;
     @FindBy(css = "td.product-quantity")
     private WebElement productQuantity;
