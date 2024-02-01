@@ -34,6 +34,14 @@ Feature:Shopping cart test
     And The user updates the cart
     Then The User then notices that the cart has been successfully updated
 
+  Scenario: Delete product from cart test
+
+    When The user closes the notification window at the bottom of the page
+    And The user will select an offer "Windsurfing w Lanzarote (Costa Teguise)"
+    And The user will go to the shopping cart view
+    And The user removes the item from the cart
+    Then The user then notices that the product has been successfully removed from the cart
+
 
 
 
