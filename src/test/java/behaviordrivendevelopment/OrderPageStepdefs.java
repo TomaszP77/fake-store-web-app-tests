@@ -50,4 +50,10 @@ public class OrderPageStepdefs {
     public void theUserNoticesThatTheOrderHasBeenPlacedCorrectly() {
         Assertions.assertEquals("Zamówienie otrzymane", orderPage.orderCompleteAssertion());
     }
+
+    @Then("The user notices that the order has not been placed because the card has expired")
+    public void theUserNoticesThatTheOrderHasNotBeenPlaced() {
+        Assertions.assertEquals("Rok wa¿noœci karty up³yn¹³ w przesz³oœci",
+                orderPage.cardWithIncorrectExpirationDateAssertion());
+    }
 }
