@@ -48,6 +48,6 @@ public class OrderPageStepdefs {
 
     @Then("The user notices that the order has been placed correctly")
     public void theUserNoticesThatTheOrderHasBeenPlacedCorrectly() {
-        Assertions.assertEquals("ZamÃ³wienie otrzymane", orderPage.orderCompleteAssertion());
+        Assertions.assertEquals("Zamówienie otrzymane", orderPage.orderCompleteAssertion());
     }
 }
