@@ -41,6 +41,7 @@ public class OrderAndPaymentTests extends BaseTest {
         cartPage.checkout();
         orderPage.billingAddressForm(billingAddressData);
         orderPage.paymentConfirm("4242 4242 4242 4242 4240", "06/24", "123");
+        orderPage.confirmPayment();
 
         Assertions.assertEquals("Zamówienie otrzymane", orderPage.orderCompleteAssertion());
     }

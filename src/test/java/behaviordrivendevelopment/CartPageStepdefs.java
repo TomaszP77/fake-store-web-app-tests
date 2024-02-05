@@ -57,4 +57,9 @@ public class CartPageStepdefs {
         Assertions.assertEquals("Usunięto: „Windsurfing w Lanzarote (Costa Teguise)“. Cofnij?"
                 , cartPage.assertionMessageForRemoveProductFromCart());
     }
+
+    @And("The user will use the go to payment button")
+    public void theUserWillUseTheGoToPaymentButton() {
+        cartPage.checkout();
+    }
 }
