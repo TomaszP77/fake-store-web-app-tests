@@ -79,6 +79,9 @@ public class OrderPage {
         inputCvc.sendKeys(cvc);
         driver.switchTo().defaultContent();
         confirmField.click();
+    }
+
+    public void confirmPayment() {
         confirmPaymentButton.click();
     }
 
